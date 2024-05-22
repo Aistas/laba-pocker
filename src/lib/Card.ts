@@ -1,6 +1,6 @@
 import {Rank, Suit} from "../components/Cards/Card.tsx";
 
-export default class Card {
+class Card {
     public rank: Rank;
     public suit: Suit;
 
@@ -9,3 +9,5 @@ export default class Card {
         this.suit = suit;
     }
 }
+
+export default Card;
