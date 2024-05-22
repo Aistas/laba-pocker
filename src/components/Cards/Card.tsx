@@ -1,7 +1,7 @@
 import React from "react";
 
-type Rank = '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'J' | 'Q' | 'K' | 'A';
-type Suit = 'diams' | 'hearts' | 'clubs' | 'spades';
+export type Rank = '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'J' | 'Q' | 'K' | 'A';
+export type Suit = 'diams' | 'hearts' | 'clubs' | 'spades';
 
 interface Props {
     rank: Rank;
