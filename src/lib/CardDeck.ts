@@ -28,6 +28,10 @@ class CardDeck {
         }
         return drawnCards;
     }
+
+    getRemainingCount(): number {
+        return this.cards.length;
+    }
 }
 
 export default CardDeck;
