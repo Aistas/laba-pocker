@@ -1,8 +1,9 @@
 import './App.css';
 import Card from "./components/Cards/Card.tsx";
 import CardDeck from './lib/CardDeck.ts';
+import PockerHand from './lib/PockerHand.ts';
 import { Rank, Suit } from './components/Cards/Card.tsx';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface CardState {
     rank: Rank;
@@ -13,6 +14,15 @@ const App: React.FC = () => {
     const [cards, setCards] = useState<CardState[]>([]);
     const [deck, setDeck] = useState<CardDeck | null>(null);
     const [remainingCards, setRemainingCards] = useState<number>(52);
+    const [handOutcome, setHandOutcome] = useState<string>('');
+
+    useEffect(() => {
+        if (cards.length === 5) {
+            const pockerHand = new PockerHand(cards);
+            const outcome = pockerHand.getOutcome();
+            setHandOutcome(outcome);
+        }
+    }, [cards]);
 
     const handleDealCards = () => {
         if (!deck) {
@@ -38,6 +48,7 @@ const App: React.FC = () => {
         setDeck(null);
         setCards([]);
         setRemainingCards(52);
+        setHandOutcome('');
     };
 
     return (
@@ -48,6 +59,7 @@ const App: React.FC = () => {
                 <button onClick={handleResetGame}>Начать игру заново</button>
             )}
             <div>Осталось карт: {remainingCards}</div>
+            {handOutcome && <div>Текущая рука: {handOutcome}</div>}
             {cards.length > 0 && (
                 <div className="playingCards faceImages">
                     {cards.map((card, index) => (
