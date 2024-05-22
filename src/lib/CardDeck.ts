@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { Rank, Suit } from "../components/Cards/Card.tsx"; // Assuming your Card component is in a components folder
+import {Rank, Suit} from "../components/Cards/Card.tsx"; // Assuming your Card component is in a components folder
 
 class CardDeck {
     private cards: Card[];
